@@ -1,0 +1,13 @@
+log/*
+tmp/*
+.git*
+.git/*
+.history/*
+.vscode/*
+
+
+makefile
+coverage.out
+.env
+.gitignore
+docker-compose.yaml

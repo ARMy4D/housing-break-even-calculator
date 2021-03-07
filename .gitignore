@@ -1,0 +1,13 @@
+.history
+.vscode
+./calculator
+coverage.out
+
+
+config/*
+!config/default.yaml
+!config/test.yaml
+
+cmd/config/*
+!cmd/config/default.yaml
+!cmd/config/test.yaml

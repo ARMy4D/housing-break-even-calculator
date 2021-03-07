@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option go_package = "github.com/army4d/housing-break-even-calculator/models/pb";
+
+service Calculator {
+  rpc Calculate(CalculatorRequest) returns (CalculatorResponse);
+}
+
+message CalculatorRequest {
+  message RentSetting {
+    float rent = 1;
+    float yearly_rent_increase_rate = 2;
+  }
+  message HouseSetting {
+    float price = 1;
+    float property_tax_rate = 2;
+    float property_transfer_tax_rate = 3;
+    int32 years_expected_to_reside = 4;
+  }
+  message MortgageSetting {
+    float down_payment = 1;
+    float intrest_rate = 2;
+    int32 term = 3;
+  }
+  HouseSetting house = 1;
+  RentSetting rent = 2;
+  MortgageSetting mortgage = 3;
+}
+
+enum PaymentType {
+  RENT = 0;
+  MORTGAGE = 1;
+  TOSS_UP = 2;
+}
+
+message CalculatorResponse {
+  int32 break_even_year_intrest = 1;
+  int32 break_even_year_overall = 2;
+  float mortgage_intrest_cost_over_residance_period = 3;
+  float mortgage_cost_over_residance_period = 4;
+  float rent_cost_over_residance_period = 5;
+  PaymentType best_payment_type_intrest_only = 6;
+  PaymentType best_payment_type_overall = 7;
+}
